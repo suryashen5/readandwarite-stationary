@@ -70,6 +70,12 @@
                                     </form>
                                 </div>
                             </li>
+
+                            @if(Auth::user()->role_id == 2)
+                            <a class="btn btn-primary mr-2" href="#" role="button">Cart</a>
+                            <a class="btn btn-primary" href="#" role="button">History</a>
+                            @endif
+
                         @endguest
                     </ul>
                 </div>
