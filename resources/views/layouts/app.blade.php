@@ -33,12 +33,15 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <div class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-                        </div>
-                    </ul>
+                    <form action="{{route('home')}}" method="get">
+                        <ul class="navbar-nav mr-auto">
+                            <div class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search" value="{{ old('search') }}">
+                                <button class="btn btn-primary my-2 my-sm-0" type="submit" value="search">Search</button>
+                            </div>
+                        </ul>
+                    </form>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

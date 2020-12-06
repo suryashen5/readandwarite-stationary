@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('stock');
             $table->foreignId('stationary_type_id');
-            $table->foreign('stationary_type_id')->references('id')->on('stationary_types');
+            $table->foreign('stationary_type_id')->references('id')->on('stationary_types')->onDelete('cascade');
             $table->string('description');
             $table->string('image');
             $table->timestamps();

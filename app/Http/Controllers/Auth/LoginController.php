@@ -42,9 +42,7 @@ class LoginController extends Controller
     }
 
     protected function sendLoginResponse(Request $request) {
-        $durationInMinutes = 120;
-        $rememberTokenCookieKey = Auth::getRecallerName();
-        Cookie::queue($rememberTokenCookieKey, Cookie::get($rememberTokenCookieKey), $durationInMinutes);
+        Cookie::queue(Auth::getRecallerName(), Cookie::get(Auth::getRecallerName()), 120);
         $request->session()->regenerate();
         $this->clearLoginAttempts($request);
 

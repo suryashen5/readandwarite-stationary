@@ -87,12 +87,14 @@
                     ReadAndWArite
                 </div>
 
-                <form>
+                <form action="{{route('home')}}" method="get">
                     <div class="form-group">
-                      <input class="form-control form-control-lg" type="text" placeholder="Search for stationary">
-                      <button class="btn btn-primary" type="submit">Search</button>
+                      <input class="form-control form-control-lg" name="search" type="text" placeholder="Search for stationary">
+                      <button class="btn btn-primary" type="submit" value="search">Search</button>
                     </div>
                 </form>
+
+
             </div>
         </div>
     </body>

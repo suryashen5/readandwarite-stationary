@@ -14,7 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return view('shopping-cart.view');
     }
 
     /**
@@ -55,9 +55,10 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit($id)
     {
-        //
+        $data = Cart::findOrFail($id);
+        return view('shopping-cart.update',compact('data'));
     }
 
     /**
@@ -69,7 +70,13 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        $request->validate([
+            'quantity' => 'required'
+        ]);
+
+        $cart->update($request->all());
+
+        return redirect()->route('shopping-cart.index');
     }
 
     /**
@@ -80,6 +87,8 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+
+        return redirect()->route('shopping-cart.index');
     }
 }
