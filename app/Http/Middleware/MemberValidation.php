@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminValidation
+class MemberValidation
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AdminValidation
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::guest() && Auth::user()->role_id == 1){
+        if(!Auth::guest() && Auth::user()->role_id == 2){
             return $next($request);
         }
 

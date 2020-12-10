@@ -7,7 +7,7 @@
             <div class="card bg-light">
                 <div class="card-body">
                     <div class="container">
-                        <h1>401 Unauthorized</h1>
+                        <h1><b>401 Unauthorized</b></h1>
                     </div>
                 </div>
             </div>

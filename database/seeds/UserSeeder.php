@@ -15,15 +15,15 @@ class UserSeeder extends Seeder
         $items = [
             [
                 'role_id' => 1,
-                'name' => 'Alex',
-                'email' => 'alex@readandwarite.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+                'name' => 'Admin',
+                'email' => 'admin@readandwarite.com',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'//password
             ],
             [
                 'role_id' => 2,
-                'name' => 'Lexa',
-                'email' => 'lexa@member.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+                'name' => 'Member',
+                'email' => 'member@member.com',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'//password
             ]
         ];
 
