@@ -94,7 +94,17 @@
                     </div>
                 </form>
 
-
+                <div class="container">
+                    <div class="row">
+                    @foreach ($types as $type)
+                        <div class="col-sm">
+                            <a href="{{route('home.show',$type->id)}}">
+                                <img class="card-img-top image" style="width: 200px; height:200px" src="{{ asset('storage/images/'.$type->image)}}" alt="No image">
+                            </a>
+                        </div>
+                    @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </body>

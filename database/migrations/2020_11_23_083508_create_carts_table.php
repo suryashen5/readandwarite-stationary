@@ -20,7 +20,6 @@ class CreateCartsTable extends Migration
             $table->foreignId('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('quantity');
-            $table->integer('total');
             $table->timestamps();
         });
     }

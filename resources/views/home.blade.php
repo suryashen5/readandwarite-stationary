@@ -6,9 +6,9 @@
         <div class="col-md-12">
             @if(!Auth::guest() && Auth::user()->role_id == 1)
             <div class="mb-3">
-                <a class="btn btn-primary" href="#" role="button">Add New Stationary</a>
-                <a class="btn btn-primary" href="#" role="button">Add New Stationary Type</a>
-                <a class="btn btn-primary" href="#" role="button">Edit Stationary Type</a>
+                <a class="btn btn-primary" href="{{route('product.create')}}" role="button">Add New Stationary</a>
+                <a class="btn btn-primary" href="{{route('type.create')}}" role="button">Add New Stationary Type</a>
+                <a class="btn btn-primary" href="{{route('type.index')}}" role="button">Edit Stationary Type</a>
             </div>
             @endif
             <div class="card bg-light">
@@ -34,8 +34,7 @@
                         </div>
                     </div>
                 </div>
-              </div>
-            {{ $products->links() }}
+            </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,15 @@
             <div class="card bg-light">
                 <div class="card-body">
                     <div class="container">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $messages)
+                                <li>{{$messages}}</li>
+                            @endforeach
+                            </ul>
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col col-sm">
                                 <img class="card-img-top image" src="{{ asset('storage/images/'.$product->image)}}" alt="No image">
@@ -25,10 +34,13 @@
                                     <a href="{{ route('product.edit', $product->id)}}" class="btn btn-primary">Edit</a>
                                 </form>
                                 @elseif(!Auth::guest() && Auth::user()->role_id == 2)
-                                <div class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-1" type="number" placeholder="Quantity">
-                                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Add to cart</button>
-                                </div>
+                                <form action="{{ route('cart.store', $product->id)}}" method="post">
+                                    @csrf
+                                    <div class="form-inline my-2 my-lg-0">
+                                        <input class="form-control mr-1" type="number" name="quantity" placeholder="Quantity">
+                                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Add to cart</button>
+                                    </div>
+                                </form>
                                 @endif
                             </div>
                         </div>

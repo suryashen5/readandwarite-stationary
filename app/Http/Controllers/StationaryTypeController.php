@@ -93,7 +93,7 @@ class StationaryTypeController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('/home');
+        return redirect('/type');
     }
 
     /**
@@ -107,6 +107,6 @@ class StationaryTypeController extends Controller
         $type = StationaryType::findOrFail($id);
         $type->delete();
 
-        return redirect('/home');
+        return redirect('/type');
     }
 }

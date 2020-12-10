@@ -2,11 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
+use App\DetailTransaction;
+use App\Product;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
+    public function checkout(){
+        $transaction = Transaction::create([
+            'user_id' => Auth::user()->id
+        ]);
+
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+
+        foreach($carts as $cart){
+            DetailTransaction::create([
+                'transaction_id' => $transaction->id,
+                'product_id' => $cart->product->id,
+                'quantity' => $cart->quantity,
+                'subtotal' => $cart->quantity * $cart->product->price
+            ]);
+
+            $product = Product::findOrFail($cart->product->id);
+            $product->update([
+                'stock' => $product->stock - $cart->quantity,
+            ]);
+
+            $cart->delete();
+        };
+
+        return redirect('/transaction-history');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +45,18 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+        $detailTransactions = DetailTransaction::all();
+
+        foreach($transactions as $transaction){
+            foreach($detailTransactions as $dt){
+                if($dt->transaction_id == $transaction->id){
+                    $transaction->total += $dt->subtotal;
+                }
+            }
+        }
+
+        return view('transactions.view',compact('transactions','detailTransactions'));
     }
 
     /**
@@ -33,7 +75,7 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
     }
